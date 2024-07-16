@@ -6,11 +6,20 @@ const title = 'Rectangle Creator'
 const count = 5
 
 // methods
+function pluginPostMessage(type: string, data: any) {
+  window.parent.postMessage({ pluginMessage: { type, ...data } }, '*')
+}
+
+function adjustSize() {
+  pluginPostMessage('adjust-size', {})
+}
 function create() {
   window.parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+  pluginPostMessage('create-rectangles', { count })
 }
 function cancel() {
   window.parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  pluginPostMessage('cancel', {})
 }
 
 const selection = ref('No selection')
