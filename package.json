@@ -1,0 +1,32 @@
+{
+  "name": "figma-border-box-inspector",
+  "version": "1.0.0",
+  "packageManager": "pnpm@7.13.4+sha512.65a3f9f8f4735c8d20e0a8a353bcf1e218bb45425c49804921bf747be9724de432470f75fa9789a0503359aeb7fb87e3248cfa0aa63470d90feedad95e1e65f3",
+  "description": "A Figma Plugin to inspect box model sizing based on border-box.",
+  "author": "serialine",
+  "license": "MIT",
+  "main": "src/code.js",
+  "scripts": {
+    "start": "concurrently --kill-others -p \"{name}\" -n \"ui  ,code\" -c \"cyan.bold,green.bold\" \"pnpm start:ui\" \"pnpm start:code\"",
+    "start:ui": "vite build --watch --config vite-ui.config.js",
+    "start:code": "vite build --watch --config vite-code.config.js",
+    "build": "vite build --config vite-ui.config.js && vite build --config vite-code.config.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.11.0",
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.22.3",
+    "@figma/eslint-plugin-figma-plugins": "*",
+    "@figma/plugin-typings": "*",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.3.3",
+    "vite-plugin-singlefile": "^2.0.2"
+  }
+}
